@@ -2,16 +2,21 @@
 #include "student.h"
 using namespace std;
 
-student::student(string roll_no, int age){
+student::student(){}
+student::student(string roll, int studentAge){
 //    this->name = name;
-    this->roll_no = roll_no;
-    this->age = age;
+    roll_no = roll;
+    age = studentAge;
 }
 
 void student::display(){
-	cout << "A student with name " << roll_no << " " << age << endl;
+	cout << "roll no: " << roll_no << " age: " << age << endl;
 }
 
+void student::setdata(string roll, int studentage){
+    roll_no = roll;
+    age = studentage;
+}
 //string student::getname(){
 //    return this->name;
 //}

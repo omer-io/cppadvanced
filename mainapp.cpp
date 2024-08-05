@@ -13,14 +13,10 @@ private:
 public:
   void add_to_whitelist(string name, student s){
    student_data_list.push_back(s);
-   student_record[name] = &s;
+   student_record[name] = &student_data_list.back();
   }
   bool is_student_present(string sname){
-      auto it = student_record.find(sname);
-      if(it != student_record.end())
-         return true;    
-      else
-         return false;
+      return student_record.find(sname) != student_record.end();
    }
   student* get_student_data(string sname){
       return student_record[sname];
@@ -28,18 +24,17 @@ public:
 };
 
 int main(){
-   student s1("1234", 22);
-   //s1.display();
+
+   student s("1234", 22);
    whitelist studentList;
-   studentList.add_to_whitelist("Omer", s1);
-   student *ptr = studentList.get_student_data("Omer");
-   ptr->display();
-   // if (studentList.is_student_present("Omer"))
-   // {
-   //    student *ptr;
-   //    ptr = studentList.get_student_data("Omer");
-   //    //ptr->display();
-   //    // then call any public function of the student class using this pointer
-   // }
+   studentList.add_to_whitelist("Omer", s);
+
+   string testname = "Omer";
+   if (studentList.is_student_present(testname)){
+      student *ptr = studentList.get_student_data(testname);
+      cout << testname << " has following data: ";
+      ptr->display();
+   }
+   
    return 0;
 }
